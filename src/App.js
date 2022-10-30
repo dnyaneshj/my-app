@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Contact from './component/contact';
 import Localdata from "./component/localData";
-import { logInfo, logWarning, logError, logDebug } from './util/log-utils'
+import { logInfo, logWarning, logError, logDebug } from './util/log-utils';
+import './App.css';
 const baseURL = "https://jsonplaceholder.typicode.com/posts";
 
 function App() {
   const [post, setPost] = useState(null);
+  const [data, setData] = useState(null);
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       logInfo('succesfully fetch data');
@@ -36,21 +38,34 @@ function App() {
 
   return (
     <>
-      <Localdata />
-      <div >
-        <table>
-          <thead><tr><th>title</th><th>body</th></tr></thead>
-          <tbody>
-            {
-              post.map((items, index) => (
-                <tr key={index}><td>{items.title}</td><td>{items.body}</td></tr>
-              )
-              )}
-          </tbody>
-        </table>
-      </div>
-      <Contact />
-      <br />
+      <div className="row">
+        <div className="width-25"> <Localdata /></div>
+        <div className="width-25"> <Contact /></div>
+        <div className="width-25">
+          <table>
+            <thead><tr><th>title</th><th>body</th></tr></thead>
+            <tbody>
+              {
+                post.map((items, index) => (
+                  <tr key={index}><td>{items.title}</td><td>{items.body}</td></tr>
+                )
+                )}
+            </tbody>
+          </table>
+        </div>
+        <div className="width-25">
+          <table>
+            <thead><tr><th>title</th><th>body</th></tr></thead>
+            <tbody>
+              {
+                data?.map((items, index) => (
+                  <tr key={index}><td>{items.title}</td><td>{items.body}</td></tr>
+                )
+                )}
+            </tbody>
+          </table>
+        </div >
+      </div >
     </>
   );
 }
