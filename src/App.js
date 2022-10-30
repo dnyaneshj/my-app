@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import Contact from './component/contact'
+import Contact from './component/contact';
+import Localdata from "./component/localData";
 import { logInfo,logWarning,logError,logDebug } from './util/log-utils'
 const baseURL = "https://jsonplaceholder.typicode.com/posts";
 
@@ -36,8 +37,9 @@ function App() {
 
   return (
     <>
+    <Localdata/>
     <Contact/>
- 
+   
       {/* <table>
         <thead><tr><th>title</th><th>body</th></tr></thead>
         <tbody>
