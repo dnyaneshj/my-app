@@ -7,7 +7,7 @@ const Contact = () => {
             .then( (response) => response.json())
             .then( (response) => setData(response))
     }, []);
-console.log(data);
+console.log("output is" + data);
     return (<>
         <ul>
             {
