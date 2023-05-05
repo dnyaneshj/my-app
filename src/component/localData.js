@@ -1,12 +1,12 @@
 import React from "react";
 import data from '../data.json';
 
-console.log(data);
+console.log(data.normalData);
 const localData = () => {
     return <>
         {
             <ul>{
-                data?.map((item, index) => (
+                data?.normalData.map((item, index) => (
                     <li key={index}>{item.id}{item.title}{item.userId}{item.body}</li>
                 ))}
             </ul>

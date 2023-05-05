@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const Contact = () => {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then( (response) => response.json())
-            .then( (response) => setData(response))
-    }, []);
-console.log("output is" + data);
-    return (<>
-        <ul>
-            {
-                data.map((items, index) => (
-                    <div key={index}>
-                        <li className="my">{items.title} {items.body}</li>
-                    </div>
-                ))
-            }
-        </ul>
+  return (
+    <>
+      <div className='container'>
+        <div className='row'>
+          <li>
+            <Link to='insta'>Link to Insta</Link>
+          </li>
+          <li>
+            <Link to='mail'>Link to Mail</Link>
+          </li>
+          <Outlet />
+        </div>
+      </div>
     </>
-    )
-}
+  );
+};
 export default Contact;

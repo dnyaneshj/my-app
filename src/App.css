@@ -61,6 +61,41 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-  background-color: #04AA6D;
+  background-color: #04AA6D!important;
   color: white;
+  background-image: none;
+}
+
+.subMenu{
+  display: none;
+  }
+ul li:hover .subMenu{
+display: block;
+}
+ul{
+  background-color: #282c34;
+  padding: 20px;
+  width: auto;
+  height:auto;
+  color: white;
+}
+ul li{
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f2f2f2;
+}
+ul li,ul li a, ul li span{
+  list-style-type: none;
+  color:#ffffff;
+}
+.text-decoration-none{
+  text-decoration: none;
+}
+.v-hidden{
+  visibility: hidden;
+}
+input[type ="radio"],input[type ="checkbox"]{
+  margin: 3px 3px 0px 5px;
+}
+.form-group{
+  margin-bottom: 5px;
 }

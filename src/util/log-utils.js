@@ -11,3 +11,4 @@ export const logWarning = (...props) => {
 export const logDebug = (...props) => {
    isLoggeEnabled && console.debug(props);
 }
+
