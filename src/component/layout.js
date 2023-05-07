@@ -20,6 +20,9 @@ import ClassForm from "./classForm";
 import ApiCall from "./apiCall";
 import FormClass from "./formClass";
 import Register from "./registration";
+import AddProduct from "./addProducts";
+import Registers from "./Register";
+
 const Layout = () => {
   const navLinkStyles = ({ isActive }) => {
     return {
@@ -32,6 +35,18 @@ const Layout = () => {
       <div className='row'>
         <div className='col-2'>
           <ul style={{ listStyleType: "none", padding: 20 }}>
+            <li>
+              {" "}
+              <NavLink to='/AddProduct' style={navLinkStyles}>
+                AddProduct
+              </NavLink>
+            </li>
+            <li>
+              {" "}
+              <NavLink to='/Registers' style={navLinkStyles}>
+                Registers
+              </NavLink>
+            </li>
             <li>
               {" "}
               <NavLink to='/forms' style={navLinkStyles}>
@@ -52,8 +67,8 @@ const Layout = () => {
             </li>
             <li>
               {" "}
-              <NavLink to='/FormReact' style={navLinkStyles}>
-                FormReact
+              <NavLink to='/ClassForm' style={navLinkStyles}>
+                ClassForm
               </NavLink>
             </li>
             <li>
@@ -126,6 +141,8 @@ const Layout = () => {
             <Route path='/' element={<Questions />}>
               {" "}
             </Route>
+            <Route path='/AddProduct' element={<AddProduct />}></Route>
+            <Route path='/Registers' element={<Registers />}></Route>
             <Route path='/Register' element={<Register />}></Route>
             <Route path='/forms' element={<FormsComponent />}></Route>
             <Route path='/ClassForm' element={<ClassForm />}></Route>
