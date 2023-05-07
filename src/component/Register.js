@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 const Registers = () => {
-  //eve.holt@reqres.in
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -11,8 +9,10 @@ const Registers = () => {
   });
 
   const handleChange = (event) => {
-    const value = event.target.value;
-    setFormData({ ...formData, [event.target.name]: value });
+    //const value = event.target.value;
+    const { name, value } = event.target;
+    //setFormData({ ...formData, [event.target.name]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (event) => {
@@ -23,12 +23,49 @@ const Registers = () => {
       lastName: formData.lastName,
       emailId: formData.email,
     };
-
-    axios
-      .post("http://13.53.33.190:8080/web-services/addDetails", payLoad)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
+    postDetails(payLoad);
   };
+
+     //API Call with Axios and async await 
+    const postDetails = async (payLoad) => {
+      try {
+        let result = await axios.post(
+          "http://13.53.33.190:8080/web-services/addDetails",
+          payLoad,
+          {
+            //headers: { ...getCommonHeaders() },
+          }
+        );
+        if (result.status === 200) {
+          console.log("HTTP POST REQUEST WAS SUCCESS" + result.data);
+          return result.data;
+        } else {
+          console.log("Some error occured");
+        }
+      } catch (err) {
+        console.log("error in catch block", err);
+      }
+    };
+
+
+  //API Call with fetch and async await only with passing header and body
+
+  // const postDetails = async (payLoad) => {
+  //   const res = await fetch("http://13.53.33.190:8080/web-services/addDetails", {
+  //     method: "POST",
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body:JSON.stringify(payLoad)
+  //   });
+
+  //   if (res.status === 200) {
+  //     console.log("successfully posted");
+  //   } else {
+  //     console.log("Some error occured in post");
+  //   }
+  // };
 
   return (
     <>

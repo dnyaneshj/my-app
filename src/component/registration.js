@@ -12,19 +12,12 @@ const Register = () => {
     country: "",
   });
 
-  // const params = {
-  //   method: "GET",
-  //   mode: "no-cors",
-  //   headers: {
-  //     accept: "application/json",
-  //   },
-  // };
-  //const u = "https://jsonplaceholder.typicode.com/posts";
   const url = "https://reqres.in/api/login";
   const mayur = "http://13.53.33.190:8080/web-services/details";
   const countryList = ["india", "pak", "china"];
 
   useEffect(() => {
+    //API CALL with async await
     async function loadData() {
       //setLoader(true);
       const res = await fetch("http://13.53.33.190:8080/web-services/details");
@@ -35,10 +28,10 @@ const Register = () => {
     loadData();
   }, []);
 
+  //API CALL without async await but with fetch and then block
   const makeAPICall = () => {
     fetch(mayur, {
       method: "GET",
-      // mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
       },
@@ -73,7 +66,7 @@ const Register = () => {
 
     axios
       .post(url, payLoad)
-      .then((res) => console.log(res))
+      .then((res) => console.log("external UI", res))
       .catch((error) => console.log(error));
   };
 
